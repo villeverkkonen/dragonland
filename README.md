@@ -1,8 +1,10 @@
 # DragonLand
 
-Create a hero,<br/>
-    equip yourself,<br/>
+```
+Create a hero,
+    equip yourself,
         slay the dragons!
+```
 
 ### [App in Heroku](https://map-places-react.herokuapp.com/)
 
