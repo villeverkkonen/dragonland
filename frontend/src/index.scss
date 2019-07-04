@@ -157,3 +157,9 @@ a {
     }
   }
 }
+
+@media only screen and (max-width: 640px) {
+  .grid-item {
+    flex-basis: 100%;
+  }
+}
