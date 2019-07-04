@@ -6,6 +6,6 @@ Create a hero,
     slay the dragons!
 ```
 
-### [App in Heroku](https://map-places-react.herokuapp.com/)
+### [App in Heroku](https://dragon-land.herokuapp.com/)
 
 ![shop](https://github.com/villeverkkonen/dragonland/blob/master/documentation/images/shop.png)
