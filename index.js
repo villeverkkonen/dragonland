@@ -13,6 +13,11 @@ app.use(express.static(__dirname + '/frontend/build'));
 app.use(express.static('public'));
 app.use(middleware.logger);
 app.use('/api/equipment', equipmentRouter);
+
+app.get('/*', function(req, res) {
+  res.redirect('/');
+});
+
 app.use(middleware.error);
 
 const PORT = process.env.PORT || 3001;
