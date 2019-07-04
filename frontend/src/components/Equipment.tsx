@@ -10,7 +10,7 @@ const Equipment = (props: EquipmentProps) => {
     <div className="equipment">
       <p>Name: {props.equipment.title}</p>
       <p>Stats: {props.equipment.stats}</p>
-      <img src={props.equipment.imageUrl} alt={props.equipment.title} />
+      <img src={props.equipment.imageUrl} alt={props.equipment.title} className="equipment-img" />
     </div>
   );
 }

@@ -33,7 +33,7 @@ export class EquipmentForSale extends React.Component<EquipmentForSaleProps, Equ
         <p>Name: {this.props.equipment.title}</p>
         <p>Stats: {this.props.equipment.stats}</p>
         <p>Price: {this.props.equipment.price}</p>
-        <img src={this.props.equipment.imageUrl} alt={this.props.equipment.title} className="equipment-for-sale-img" />
+        <img src={this.props.equipment.imageUrl} alt={this.props.equipment.title} className="equipment-img equipment-for-sale-img" />
         {gold >= this.props.equipment.price && !herosEquipment.includes(this.props.equipment)
         ?
           <button onClick={() => this.buyEquipment(this.props.equipment)} className="button buy-equipment-btn">Buy</button>

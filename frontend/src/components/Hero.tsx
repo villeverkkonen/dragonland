@@ -29,7 +29,8 @@ export class Hero extends React.Component<HeroProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      nameRequiredWarning: false
     }
   }
 
@@ -40,19 +41,28 @@ export class Hero extends React.Component<HeroProps, any> {
   }
 
   createHero = () => {
-    this.props.createHero(this.state.name);
+    if (this.state.name.length > 0) {
+      this.props.createHero(this.state.name);
+    } else {
+      this.setState({ nameRequiredWarning: true });
+    }
   }
 
   render() {
     const { name, gold, equipment } = this.props;
     return (
       <div>
-        <div className="hero-form">
-          <h3>Create a hero</h3>
-          <label htmlFor="input-name">Name:</label>
-          <input type="text" id="input-name" autoFocus onChange={this.handleNameChange} />
-          <button className="button create-hero-btn" onClick={this.createHero}>Create</button>
-        </div>
+        {name.length === 0 ?
+          <div className="hero-form">
+            <h3>Create a hero</h3>
+            {this.state.nameRequiredWarning
+            ? <div className="name-required-warning"><p>Please enter name</p></div>
+            : null}
+            <label htmlFor="input-name">Name:</label>
+            <input type="text" id="input-name" onChange={this.handleNameChange} autoFocus />
+            <button className="button create-hero-btn" onClick={this.createHero}>Create</button>
+          </div>
+        : null}
 
         {name && name.length > 0
         ?

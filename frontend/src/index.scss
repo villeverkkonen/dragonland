@@ -35,7 +35,15 @@ a {
   }
 }
 
+.equipment-img {
+  height: 10em;
+}
+
 .hero-form {
+
+  .name-required-warning {
+    color: red;
+  }
 
   label {
     display: block;
@@ -47,6 +55,11 @@ a {
     padding: 3px;
     background-color: rgb(241, 225, 81);
     font-family: 'MedievalSharp', cursive;
+    border: solid 1.5px #ad3f26;
+  }
+
+  input:focus {
+    outline: none;
   }
 
   .create-hero-btn {
@@ -132,7 +145,7 @@ a {
           .nav-link {
             padding: 1em;
             text-transform: uppercase;
-            font-size: .8em;
+            font-size: 1.2em;
             color: white;
 
             &:hover {
