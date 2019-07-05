@@ -59,11 +59,19 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     const heroElement = document.getElementById('hero-charater');
     const dragonElement = document.getElementById('dragon-character');
     if (heroElement && dragonElement) {
-      heroElement.animate({ transform: [ 'rotate(0deg)', 'rotate(360deg)' ] },
-        { duration: 1000, iterations: 2 });
+      heroElement.animate({
+        transform: ['rotate(0deg)', 'rotate(360deg)'],
+      }, {
+          duration: 1000,
+          iterations: 2,
+      });
 
-      dragonElement.animate({ transform: [ 'translateY(0px)', 'translateY(10px)' ] },
-        { duration: 1000, iterations: 2 });
+      dragonElement.animate({
+        transform: [ 'translateY(0px)', 'translateY(10px)' ]
+        }, {
+          duration: 1000,
+          iterations: 2
+        });
     }
 
     const randomNum = Math.floor(Math.random() * 101);
