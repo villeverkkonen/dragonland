@@ -20,16 +20,17 @@
 
   .battlefield {
 
-    .battlefield-characters {
-  
-      .battlefield-character-image {
-        height: 6em;
-      }
+    .battlefield-character-image {
+      height: 6em;
     }
+  }
+
+  .gameover-dragon {
+    height: 7em;
   }
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 400px) {
   .header {
 
     .container .nav .nav-ul .nav-li {
@@ -38,5 +39,9 @@
         padding: 0.2em;
       }
     }
+  }
+
+  .gameover-dragon {
+    height: 4.5em;
   }
 }

@@ -6,6 +6,10 @@ body {
 
 .content {
   padding: 20px;
+
+  p {
+    font-size: 1.2em;
+  }
 }
 
 a {
@@ -67,6 +71,15 @@ a {
       margin-left: 20px;
       display: block;
     }
+  }
+}
+
+.hero-stats {
+  line-height: 0.2em;
+
+  .left-column {
+    width: 5.3em;
+    float: left;
   }
 }
 
@@ -164,13 +177,26 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    .battlefield-character-image {
-      height: 10em;
-    }
-
-    .battlefield-character {
-
-    }
   }
+
+  .battlefield-character-image {
+    height: 10em;
+  }
+
+  .battlefield-hero-stats {
+    margin: 10px 0 10px 0;
+  }
+
+  .battlefield-actions {
+    margin-top: 20px;
+  }
+}
+
+.gameover-dragon {
+  height: 8em;
+}
+
+.reverse-img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }

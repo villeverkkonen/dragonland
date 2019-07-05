@@ -1,6 +1,9 @@
 import {
   CREATE_HERO,
-  BUY_EQUIPMENT
+  BUY_EQUIPMENT,
+  WIN_GOLD,
+  LOSE_GOLD,
+  GAME_OVER
 } from '../actions';
 import { EquipmentType } from '../../equipment/types';
 
@@ -18,7 +21,7 @@ const initialState: State = {
 
 export function heroReducer(
   state = initialState,
-  action: { type: string, name?: string, equipment: EquipmentType }) {
+  action: { type: string, name?: string, goldAmount: number, equipment: EquipmentType }) {
     switch (action.type) {
       case CREATE_HERO:
         return {
@@ -32,6 +35,27 @@ export function heroReducer(
           ...state,
           gold: state.gold - action.equipment.price,
           equipment: newEquipmentList
+        };
+      case WIN_GOLD:
+        return {
+          ...state,
+          gold: state.gold + action.goldAmount
+        };
+      case LOSE_GOLD:
+        let goldToDecrease = action.goldAmount;
+        let newAmount = state.gold - goldToDecrease;
+        if (newAmount < 0) {
+          newAmount = 0;
+        }
+        return {
+          ...state,
+          gold: newAmount
+        };
+      case GAME_OVER:
+        return {
+          name: '',
+          gold: 0,
+          equipment: []
         };
       default:
         return state;

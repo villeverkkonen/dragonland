@@ -1,6 +1,7 @@
 import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import Equipment from './Equipment';
+import HeroStats from './HeroStats';
 import { EquipmentType } from '../store/equipment/types';
 import { createHero } from '../store/hero/actions';
 
@@ -50,6 +51,7 @@ export class Hero extends React.Component<HeroProps, any> {
 
   render() {
     const { name, gold, equipment } = this.props;
+
     return (
       <div>
         {name.length === 0 ?
@@ -70,6 +72,7 @@ export class Hero extends React.Component<HeroProps, any> {
             <h3>Your hero:</h3>
             <p>Name: {name}</p>
             <p>Gold: {gold}</p>
+            <HeroStats equipment={equipment} />
             <h3>Equipments:</h3>
             {equipment && equipment.length > 0
             ?

@@ -5,6 +5,7 @@ import { EquipmentType } from '../store/equipment/types';
 
 interface EquipmentShopProps {
   equipment: EquipmentType[];
+  herosEquipment: EquipmentType[];
   gold: number;
 }
 
@@ -14,13 +15,14 @@ interface EquipmentShopState {
   },
   heroReducer: {
     gold: number;
+    equipment: EquipmentType[];
   }
 }
 
 class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopState> {
 
   render() {
-    const { equipment, gold } = this.props as EquipmentShopProps;
+    const { equipment, herosEquipment, gold } = this.props as EquipmentShopProps;
     return (
       <div>
         <h3>Gold: {gold}</h3>
@@ -28,9 +30,12 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
         ?
           <div className="grid-container">
             {equipment.map(equipment => (
-              <div className="grid-item" key={equipment.id}>
-                <EquipmentForSale equipment={equipment}/>
-              </div>
+              !herosEquipment.includes(equipment)
+              ?
+                <div className="grid-item" key={equipment.id}>
+                  <EquipmentForSale equipment={equipment}/>
+                </div>
+              : null
             ))}
           </div>
         : null}
@@ -41,7 +46,8 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
 
 const mapStateToProps = (state: EquipmentShopState) => ({
   equipment: state.equipmentReducer.equipment,
-  gold: state.heroReducer.gold
+  gold: state.heroReducer.gold,
+  herosEquipment: state.heroReducer.equipment
 });
 
 export default connect(mapStateToProps)(EquipmentShop);

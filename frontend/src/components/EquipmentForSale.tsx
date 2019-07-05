@@ -30,8 +30,16 @@ export class EquipmentForSale extends React.Component<EquipmentForSaleProps, Equ
     const { gold, herosEquipment } = this.props;
     return (
       <div className="equipment-for-sale">
-        <p>Name: {this.props.equipment.title}</p>
-        <p>Stats: {this.props.equipment.stats}</p>
+        <p>{this.props.equipment.title}</p>
+
+        {this.props.equipment.stats.map(stat => {
+          return (
+            <div key={stat.title}>
+              {stat.title + ": +" + stat.points}
+            </div>
+          );
+        })}
+
         <p>Price: {this.props.equipment.price}</p>
         <img src={this.props.equipment.imageUrl} alt={this.props.equipment.title} className="equipment-img equipment-for-sale-img" />
         {gold >= this.props.equipment.price && !herosEquipment.includes(this.props.equipment)
