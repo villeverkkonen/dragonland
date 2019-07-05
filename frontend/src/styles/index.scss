@@ -200,3 +200,24 @@ a {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+
+.lifebar-background {
+  background-color: red;
+  height: 1.5em;
+  width: 6em;
+  border: solid 2px red;
+}
+
+.lifebar {
+  .lifebar-life {
+    background-color: green;
+    height: 1.5em;
+    text-align: center;
+  }
+
+  .lifebar-number {
+    position: absolute;
+    margin: 4px;
+    color: gold;
+  }
+}

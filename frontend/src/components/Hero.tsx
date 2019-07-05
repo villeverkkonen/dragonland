@@ -6,9 +6,10 @@ import { EquipmentType } from '../store/equipment/types';
 import { createHero } from '../store/hero/actions';
 
 interface HeroProps {
-  name: string,
-  gold: number,
-  equipment: EquipmentType[],
+  name: string;
+  gold: number;
+  life: number;
+  equipment: EquipmentType[];
   createHero: (name: string) => void;
 }
 
@@ -16,6 +17,7 @@ interface HeroState {
   heroReducer: {
     name: string,
     gold: number,
+    life: number,
     equipment: EquipmentType[]
   }
 }
@@ -50,7 +52,7 @@ export class Hero extends React.Component<HeroProps, any> {
   }
 
   render() {
-    const { name, gold, equipment } = this.props;
+    const { name, gold, life, equipment } = this.props;
 
     return (
       <div>
@@ -72,6 +74,7 @@ export class Hero extends React.Component<HeroProps, any> {
             <h3>Your hero:</h3>
             <p>Name: {name}</p>
             <p>Gold: {gold}</p>
+            <p>Life: {life}</p>
             <HeroStats equipment={equipment} />
             <h3>Equipments:</h3>
             {equipment && equipment.length > 0
@@ -94,6 +97,7 @@ export class Hero extends React.Component<HeroProps, any> {
 const mapStateToProps = (state: HeroState) => ({
   name: state.heroReducer.name,
   gold: state.heroReducer.gold,
+  life: state.heroReducer.life,
   equipment: state.heroReducer.equipment
 });
 

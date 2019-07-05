@@ -4,6 +4,7 @@ import { winGold, loseGold, gameOver } from '../store/hero/actions';
 import { EquipmentType } from '../store/equipment/types';
 import HeroStats from './HeroStats';
 import GameOver from './GameOver';
+import LifeBar from './LifeBar';
 
 interface BattlefieldProps {
   fightOn: boolean;
@@ -12,6 +13,7 @@ interface BattlefieldProps {
   winAmount: number;
   loseAmount: number;
   gold: number;
+  herosLife: number;
   herosEquipment: EquipmentType[];
   winGold: (amount: number) => void;
   loseGold: (amount: number) => void;
@@ -25,11 +27,13 @@ interface BattlefieldState {
   winAmount: number;
   loseAmount: number;
   gameOver: boolean;
+  herosLife: number;
 }
 
 interface MapStateProps {
   heroReducer: {
     gold: number;
+    life: number;
     equipment: EquipmentType[];
   }
 }
@@ -49,9 +53,13 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       heroWon: false,
       winAmount: 3,
       loseAmount: 2,
-      gameOver: false
-
+      gameOver: false,
+      herosLife: 0
     }
+  }
+
+  componentDidMount() {
+    this.setState({ herosLife: this.props.herosLife });
   }
 
   fight = () => {
@@ -89,6 +97,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   battleWon = () => {
+    this.setState({ herosLife: 100 });
     this.winGold();
   }
 
@@ -97,6 +106,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   battleLost = () => {
+    this.setState({ herosLife: 0 });
     if (this.props.gold - this.state.loseAmount <= 0) {
       this.gameOver();
     } else {
@@ -129,6 +139,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
             <div className="battlefield-hero-stats">
               <p>Gold: {gold}</p>
               <HeroStats equipment={herosEquipment} />
+              <LifeBar life={this.state.herosLife} />
             </div>
 
             <div className="battlefield-characters">
@@ -158,6 +169,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 
 const mapStateToProps = (state: MapStateProps) => ({
   gold: state.heroReducer.gold,
+  herosLife: state.heroReducer.life,
   herosEquipment: state.heroReducer.equipment
 })
 
