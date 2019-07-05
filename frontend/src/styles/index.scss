@@ -4,68 +4,13 @@ body {
   font-family: 'MedievalSharp', cursive;
 }
 
-a {
-  text-decoration: none;
-  cursor: url('/sword.cur'), pointer;
-}
-
 .content {
   padding: 20px;
 }
 
-.home {
-  margin: 10px;
-
-  .home-instuctions {
-    font-size: 28px;
-
-    .home-instruction-1 {
-      display: block;
-    }
-
-    .home-instruction-2 {
-      margin-left: 10px;
-      display: block;
-    }
-
-    .home-instruction-3 {
-      margin-left: 20px;
-      display: block;
-    }
-  }
-}
-
-.equipment-img {
-  height: 10em;
-}
-
-.hero-form {
-
-  .name-required-warning {
-    color: red;
-  }
-
-  label {
-    display: block;
-  }
-
-  input {
-    display: block;
-    margin-top: 5px;
-    padding: 3px;
-    background-color: rgb(241, 225, 81);
-    font-family: 'MedievalSharp', cursive;
-    border: solid 1.5px #ad3f26;
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .create-hero-btn {
-    display: block;
-    margin-top: 5px;
-  }
+a {
+  text-decoration: none;
+  cursor: url('/sword.cur'), pointer;
 }
 
 .button {
@@ -99,6 +44,61 @@ a {
   border-radius: 5px;
 }
 
+.equipment-img {
+  height: 10em;
+}
+
+.home {
+  margin: 10px;
+
+  .home-instuctions {
+    font-size: 28px;
+
+    .home-instruction-1 {
+      display: block;
+    }
+
+    .home-instruction-2 {
+      margin-left: 10px;
+      display: block;
+    }
+
+    .home-instruction-3 {
+      margin-left: 20px;
+      display: block;
+    }
+  }
+}
+
+.hero-form {
+
+  .name-required-warning {
+    color: red;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    display: block;
+    margin-top: 5px;
+    padding: 3px;
+    background-color: rgb(241, 225, 81);
+    font-family: 'MedievalSharp', cursive;
+    border: solid 1.5px #ad3f26;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .create-hero-btn {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
 .equipment-for-sale {
   .buy-equipment-btn {
     display: block;
@@ -127,7 +127,7 @@ a {
 
   .container {
     margin: 0 auto;
-    padding: 1.3em;
+    padding: 0.8em;
     display: inline-block;
 
     .nav {
@@ -158,23 +158,19 @@ a {
   }
 }
 
-@media only screen and (max-width: 640px) {
-  .grid-item {
-    flex-basis: 100%;
-  }
+.battlefield {
 
-  .header {
+  .battlefield-characters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-      .logo {
-      width: 3em;
+    .battlefield-character-image {
+      height: 10em;
     }
 
-    .container .nav .nav-ul .nav-li {
-      margin: 2px;
-      
-      .nav-link {
-        padding: 0.5em;
-      }
+    .battlefield-character {
+
     }
   }
 }

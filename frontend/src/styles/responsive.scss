@@ -1,0 +1,42 @@
+@media only screen and (max-width: 640px) {
+  .grid-item {
+    flex-basis: 100%;
+  }
+
+  .header {
+
+    .logo {
+      width: 3em;
+    }
+
+    .container .nav .nav-ul .nav-li {
+      margin: 2px;
+      
+      .nav-link {
+        padding: 0.5em;
+      }
+    }
+  }
+
+  .battlefield {
+
+    .battlefield-characters {
+  
+      .battlefield-character-image {
+        height: 6em;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .header {
+
+    .container .nav .nav-ul .nav-li {
+      
+      .nav-link {
+        padding: 0.2em;
+      }
+    }
+  }
+}
