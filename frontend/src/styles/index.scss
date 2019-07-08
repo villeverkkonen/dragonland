@@ -74,12 +74,12 @@ a {
   }
 }
 
-.hero-stats {
+.hero-stats, .dragon-stats {
   line-height: 0.2em;
 
   .left-column {
     width: 5.3em;
-    float: left;
+    // float: left;
   }
 }
 
@@ -173,10 +173,35 @@ a {
 
 .battlefield {
 
+  .battlefield-stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .battlefield-characters {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+
+    #hero-character {
+      margin-right: 10px;
+    }
+
+    #dragon-character {
+      position: absolute;
+      bottom: 0;
+      left: 120px;
+    }
+
+    .battlefield-damage {
+      color: red;
+      text-align: center;
+      height: 20px;
+      display: block;
+    }
   }
 
   .battlefield-character-image {
@@ -201,14 +226,17 @@ a {
   transform: scaleX(-1);
 }
 
-.lifebar-background {
-  background-color: red;
-  height: 1.5em;
-  width: 6em;
-  border: solid 2px red;
-}
-
 .lifebar {
+
+  .lifebar-background {
+    background-color: red;
+    height: 1.5em;
+    width: 6em;
+    border: solid 2px red;
+    margin: auto;
+    text-align: left;
+  }
+
   .lifebar-life {
     background-color: green;
     height: 1.5em;

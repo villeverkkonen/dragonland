@@ -20,8 +20,15 @@
 
   .battlefield {
 
-    .battlefield-character-image {
-      height: 6em;
+    .battlefield-characters {
+      
+      #dragon-character {
+        left: 100px;
+      }
+
+      .battlefield-character-image {
+        height: 6em;
+      }
     }
   }
 

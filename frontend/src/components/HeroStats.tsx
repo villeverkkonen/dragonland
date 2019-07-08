@@ -6,7 +6,7 @@ interface EquipmentProps {
 }
 
 const HeroStats = (props: EquipmentProps) => {
-  let attack = 0, defense = 0, movement = 0;
+  let attack = 0, defense = 0, maxHit = 30;
 
   props.equipment.map(equip => {
     return (
@@ -15,13 +15,11 @@ const HeroStats = (props: EquipmentProps) => {
           return attack += stat.points;
         } else if (stat.title.toLowerCase() === "defense") {
           return defense += stat.points;
-        } else if (stat.title.toLowerCase() === "movement") {
-          return movement += stat.points;
         }
         return null;
       })
     );
-  })
+  });
 
   return (
     <div className="hero-stats">
@@ -34,8 +32,12 @@ const HeroStats = (props: EquipmentProps) => {
         <span className="right-column">{defense}</span>
       </p>
       <p>
-        <span className="left-column">Movement: </span>
-        <span className="right-column">{movement}</span>
+        <span className="left-column">Max hit: </span>
+        <span className="right-column">{maxHit + attack}</span>
+      </p>
+      <p>
+        <span className="left-column">Min hit: </span>
+        <span className="right-column">{attack}</span>
       </p>
     </div>
   );

@@ -5,7 +5,7 @@ const equipment = [
     stats: [
       {
         title: "Attack",
-        points: 2
+        points: 4
       }
     ],
     price: 5,
@@ -17,7 +17,7 @@ const equipment = [
     stats: [
       {
         title: "Defense",
-        points: 2
+        points: 4
       }
     ],
     price: 5,
@@ -25,19 +25,19 @@ const equipment = [
   },
   {
     id: 3,
-    title: "Feather Boots of Storm",
+    title: "Swords of Fire and Ice",
     stats: [
       {
-        title: "Movement",
-        points: 2
+        title: "Attack",
+        points: 6
       },
       {
         title: "Defense",
-        points: 1
+        points: 2
       }
     ],
-    price: 5,
-    imageUrl: "/images/boots.png"
+    price: 10,
+    imageUrl: "/images/dual_swords.png"
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const equipment = [
     stats: [
       {
         title: "Attack",
-        points: 1
+        points: 2
       }
     ],
     price: 4,
@@ -57,11 +57,23 @@ const equipment = [
     stats: [
       {
         title: "Defense",
-        points: 3
+        points: 6
       }
     ],
     price: 6,
     imageUrl: "/images/shield.png"
+  },
+  {
+    id: 6,
+    title: "Elven Boots",
+    stats: [
+      {
+        title: "Defense",
+        points: 2
+      }
+    ],
+    price: 4,
+    imageUrl: "/images/boots.png"
   }
 ];
 
