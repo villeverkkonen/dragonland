@@ -241,7 +241,12 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
             </div>
 
             <div className="battlefield-actions">
-              <button className="button battlefield-fight-button" onClick={this.startFight}>Fight</button>
+              {this.state.fightOn
+              ?
+                <button className="button battlefield-fight-button disabled" disabled>Fight</button>
+              :
+                <button className="button battlefield-fight-button" onClick={this.startFight}>Fight</button>
+              }
               {this.state.fightOver && !this.state.fightOn  && this.state.heroWon
               ? <p>You won!</p>
               : null}

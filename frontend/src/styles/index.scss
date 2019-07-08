@@ -28,6 +28,11 @@ a {
   cursor: url('/sword.cur'), pointer;
 }
 
+.disabled {
+  cursor: not-allowed;
+  background-color: rgb(67, 69, 71);
+}
+
 .grid-container {
   background-color: #0755A0;
   padding: 10px;
@@ -79,7 +84,6 @@ a {
 
   .left-column {
     width: 5.3em;
-    // float: left;
   }
 }
 
