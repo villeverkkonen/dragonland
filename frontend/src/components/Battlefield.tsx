@@ -120,7 +120,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 
   dealDamage = async () => {
     await this.wait(1000);
-    const herosHit = await Math.floor(Math.random() * this.state.maxHitForHero);
+    const herosHit = await Math.floor(Math.random() * (+this.state.maxHitForHero - +this.state.minHitForHero) + +this.state.minHitForHero);
     let dragonsLife = await this.state.dragonsLife - herosHit;
     if (dragonsLife < 0) {
       dragonsLife = 0;
@@ -132,7 +132,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 
     if (this.state.dragonsLife > 0) {
       await this.wait(1000);
-      const dragonsHit = await Math.floor(Math.random() * this.state.maxHitForDragon);
+      const dragonsHit = await Math.floor(Math.random() * (+this.state.maxHitForDragon - +this.state.minHitForDragon) + +this.state.minHitForDragon);
       let herosLife = await this.state.herosLife - dragonsHit;
       if (herosLife < 0) {
         herosLife = 0;
