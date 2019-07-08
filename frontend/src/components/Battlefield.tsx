@@ -118,8 +118,21 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 
   wait = (ms: number) => new Promise(res => setTimeout(res, ms));
 
+  animation = (elementId: string, transformParams1: string, transformParams2: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.animate({
+          transform: [transformParams1, transformParams2],
+      }, {
+          duration: 500,
+          iterations: 1,
+      });
+    }
+  }
+
   dealDamage = async () => {
     await this.wait(1000);
+    this.animation('hero-character', 'translateX(10px)', 'translateX(-10px)');
     const herosHit = await Math.floor(Math.random() * (+this.state.maxHitForHero - +this.state.minHitForHero) + +this.state.minHitForHero);
     let dragonsLife = await this.state.dragonsLife - herosHit;
     if (dragonsLife < 0) {
@@ -132,6 +145,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 
     if (this.state.dragonsLife > 0) {
       await this.wait(1000);
+      this.animation('dragon-character', 'translateY(-10px)', 'translateY(10px)');
       const dragonsHit = await Math.floor(Math.random() * (+this.state.maxHitForDragon - +this.state.minHitForDragon) + +this.state.minHitForDragon);
       let herosLife = await this.state.herosLife - dragonsHit;
       if (herosLife < 0) {
@@ -196,7 +210,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
             <h1>Battlefield</h1>
 
             <div className="battlefield-characters">
-              <div className="battlefield-character" id="hero-character">
+              <div className="battlefield-character hero-character">
                 <div className="battlefield-hero-stats">
                   <p>Gold: {gold}</p>
                   <HeroStats equipment={herosEquipment} />
@@ -207,9 +221,9 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
                   ? -this.state.dragonsHit
                   : null}
                 </div>
-                <img src="/images/hero.png" alt="hero" className="battlefield-character-image" />
+                <img src="/images/hero.png" alt="hero" className="battlefield-character-image" id="hero-character" />
               </div>
-              <div className="battlefield-character" id="dragon-character">
+              <div className="battlefield-character dragon-character">
                 <div className="battlefied-dragon-stats">
                   <DragonStats
                     maxHit={this.state.maxHitForDragon}
@@ -222,7 +236,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
                   ? -this.state.herosHit
                   : null}
                 </div>
-                <img src="/images/dragon.png" alt="dragon" className="battlefield-character-image" />
+                <img src="/images/dragon.png" alt="dragon" className="battlefield-character-image" id="dragon-character" />
               </div>
             </div>
 
