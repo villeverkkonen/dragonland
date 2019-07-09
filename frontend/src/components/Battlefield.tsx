@@ -131,6 +131,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   dealDamage = async () => {
+    // Hero hits first after 1 second
     await this.wait(1000);
     this.animation('hero-character', 'translateX(10px)', 'translateX(-10px)');
     const herosHit = await Math.floor(Math.random() * (+this.state.maxHitForHero - +this.state.minHitForHero) + +this.state.minHitForHero);
@@ -143,6 +144,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       herosHit
     });
 
+    // Dragon hits 1 second after Hero
     if (this.state.dragonsLife > 0) {
       await this.wait(1000);
       this.animation('dragon-character', 'translateY(-10px)', 'translateY(10px)');
@@ -215,12 +217,12 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
                   <p>Gold: {gold}</p>
                   <HeroStats equipment={herosEquipment} />
                 </div>
-                <LifeBar life={this.state.herosLife} />
-                <div className="battlefield-damage hero-damage">
-                  {this.state.fightOn || this.state.fightOver
-                  ? -this.state.dragonsHit
-                  : null}
-                </div>
+                <LifeBar
+                  life={this.state.herosLife}
+                  fightOn={this.state.fightOn}
+                  fightOver={this.state.fightOver}
+                  hitAmount={this.state.dragonsHit}
+                />
                 <img src="/images/hero.png" alt="hero" className="battlefield-character-image" id="hero-character" />
               </div>
               <div className="battlefield-character dragon-character">
@@ -230,12 +232,12 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
                     minHit={this.state.minHitForDragon}
                   />
                 </div>
-                <LifeBar life={this.state.dragonsLife} />
-                <div className="battlefield-damage dragon-damage">
-                  {this.state.fightOn || this.state.fightOver
-                  ? -this.state.herosHit
-                  : null}
-                </div>
+                <LifeBar
+                  life={this.state.dragonsLife}
+                  fightOn={this.state.fightOn}
+                  fightOver={this.state.fightOver}
+                  hitAmount={this.state.herosHit}
+                />
                 <img src="/images/dragon.png" alt="dragon" className="battlefield-character-image" id="dragon-character" />
               </div>
             </div>
