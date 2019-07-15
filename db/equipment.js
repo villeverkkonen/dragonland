@@ -5,7 +5,7 @@ const equipment = [
     stats: [
       {
         title: "Attack",
-        points: 2
+        points: 1
       }
     ],
     price: 4,
@@ -17,7 +17,7 @@ const equipment = [
     stats: [
       {
         title: "Defense",
-        points: 2
+        points: 1
       }
     ],
     price: 4,
@@ -29,7 +29,7 @@ const equipment = [
     stats: [
       {
         title: "Attack",
-        points: 3
+        points: 2
       }
     ],
     price: 5,
@@ -41,7 +41,7 @@ const equipment = [
     stats: [
       {
         title: "Defense",
-        points: 3
+        points: 2
       }
     ],
     price: 5,
@@ -53,7 +53,7 @@ const equipment = [
     stats: [
       {
         title: "Defense",
-        points: 5
+        points: 3
       }
     ],
     price: 6,
@@ -65,7 +65,7 @@ const equipment = [
     stats: [
       {
         title: "Attack",
-        points: 6
+        points: 4
       },
       {
         title: "Defense",
