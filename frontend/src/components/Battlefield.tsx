@@ -83,8 +83,8 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       herosLife: 100,
       dragonsLife: 100,
       dragonsHit: 0,
-      maxHitForDragon: 35,
-      extraHitForGreenDragon: 4,
+      maxHitForDragon: 30,
+      extraHitForGreenDragon: 9,
       showWinner: false
     }
   }
