@@ -79,12 +79,19 @@ a {
   }
 }
 
-.hero-stats, .dragon-stats {
+.hero-stats {
   line-height: 0.2em;
 
   .left-column {
-    width: 5.3em;
+    width: 7.5em;
+    display: inline-block;
+    text-align: left;
+    float: left;
   }
+}
+
+.dragon-stats {
+  line-height: 0.2em;
 }
 
 .hero-form {
@@ -192,6 +199,11 @@ a {
 
     .hero-character {
       margin-right: 10px;
+      text-align: left;
+
+      .lifebar-background {
+        margin: 0;
+      }
     }
 
     .dragon-character {
@@ -221,13 +233,18 @@ a {
   }
 }
 
-.gameover-dragon {
+.gameover-img {
   height: 8em;
 }
 
 .reverse-img {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+
+.revert-img {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
 }
 
 .lifebar {

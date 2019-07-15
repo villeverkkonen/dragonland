@@ -1,10 +1,11 @@
 import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { winGold, loseGold, gameOver } from '../store/hero/actions';
+import { winGold, loseGold, gameOver, incrementRoundsFought } from '../store/hero/actions';
 import { EquipmentType } from '../store/equipment/types';
 import HeroStats from './HeroStats';
 import DragonStats from './DragonStats';
 import GameOver from './GameOver';
+import GameWin from './GameWin';
 import LifeBar from './LifeBar';
 
 interface BattlefieldProps {
@@ -15,10 +16,15 @@ interface BattlefieldProps {
   loseAmount: number;
   gold: number;
   herosLife: number;
+  attack: number;
+  defense: number;
+  maxHitForHero: number;
+  everyEquipmentCollected: boolean;
   herosEquipment: EquipmentType[];
   winGold: (amount: number) => void;
   loseGold: (amount: number) => void;
   gameOver: () => void;
+  incrementRoundsFought: () => void;
 }
 
 interface BattlefieldState {
@@ -28,21 +34,22 @@ interface BattlefieldState {
   winAmount: number;
   loseAmount: number;
   gameOver: boolean;
-  herosLife: number;
+  gameWin: boolean;
   herosHit: number;
+  herosLife: number;
   dragonsLife: number;
   dragonsHit: number;
-  maxHitForHero: number;
-  minHitForHero: number;
   maxHitForDragon: number;
-  minHitForDragon: number;
 }
 
 interface MapStateProps {
   heroReducer: {
-    gold: number;
     life: number;
     equipment: EquipmentType[];
+    attack: number;
+    defense: number;
+    maxHit: number;
+    everyEquipmentCollected: boolean;
   }
 }
 
@@ -50,6 +57,7 @@ interface DispatchProps {
   winGold: (amount: number) => void;
   loseGold: (amount: number) => void;
   gameOver: () => void;
+  incrementRoundsFought: () => void;
 }
 
 export class Battlefield extends React.Component<BattlefieldProps, BattlefieldState> {
@@ -62,39 +70,25 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       winAmount: 3,
       loseAmount: 2,
       gameOver: false,
-      herosLife: 100,
+      gameWin: false,
       herosHit: 0,
+      herosLife: 100,
       dragonsLife: 100,
       dragonsHit: 0,
-      maxHitForHero: 30,
-      minHitForHero: 0,
-      maxHitForDragon: 40,
-      minHitForDragon: 0
+      maxHitForDragon: 40
     }
   }
 
   componentDidMount() {
-    // @TODO Better solution for maxHit calculations, now duplicates
-    let attack = 0, defense = 0, maxHitForHero = 30, maxHitForDragon = 40;
-    this.props.herosEquipment.map(equip => {
-      return (
-        equip.stats.map(stat => {
-          if (stat.title.toLowerCase() === "attack") {
-            return attack += stat.points;
-          } else if (stat.title.toLowerCase() === "defense") {
-            return defense += stat.points;
-          }
-          return null;
-        })
-      );
-    });
-
-    this.setState({
-      herosLife: this.props.herosLife,
-      maxHitForHero: maxHitForHero + attack,
-      minHitForHero: attack,
-      maxHitForDragon: maxHitForDragon - defense
-    });
+    if (this.props.everyEquipmentCollected) {
+      this.setState({
+        maxHitForDragon: this.state.maxHitForDragon - this.props.defense + 20
+      });
+    } else {
+      this.setState({
+        maxHitForDragon: this.state.maxHitForDragon - this.props.defense
+      });
+    }
   }
 
   startFight = async () => {
@@ -105,6 +99,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       herosHit: 0,
       dragonsHit: 0
     });
+    this.props.incrementRoundsFought();
     this.fight();
   }
 
@@ -134,13 +129,13 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     // Hero hits first after 1 second
     await this.wait(1000);
     this.animation('hero-character', 'translateX(10px)', 'translateX(-10px)');
-    const herosHit = await Math.floor(Math.random() * (+this.state.maxHitForHero - +this.state.minHitForHero) + +this.state.minHitForHero);
+    const herosHit = await Math.floor(Math.random() * (this.props.maxHitForHero + 1));
     let dragonsLife = await this.state.dragonsLife - herosHit;
     if (dragonsLife < 0) {
       dragonsLife = 0;
     }
     await this.setState({
-      dragonsLife: dragonsLife,
+      dragonsLife,
       herosHit
     });
 
@@ -148,13 +143,13 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     if (this.state.dragonsLife > 0) {
       await this.wait(1000);
       this.animation('dragon-character', 'translateY(-10px)', 'translateY(10px)');
-      const dragonsHit = await Math.floor(Math.random() * (+this.state.maxHitForDragon - +this.state.minHitForDragon) + +this.state.minHitForDragon);
+      const dragonsHit = await Math.floor(Math.random() * (this.state.maxHitForDragon + 1));
       let herosLife = await this.state.herosLife - dragonsHit;
       if (herosLife < 0) {
         herosLife = 0;
       }
       await this.setState({
-        herosLife: herosLife,
+        herosLife,
         dragonsHit
       });
     }
@@ -167,13 +162,17 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     this.setState({
       fightOn: false,
       fightOver: true,
-      heroWon: heroWon
+      heroWon
     });
     heroWon ? this.battleWon() : this.battleLost();
   }
 
   battleWon = () => {
     this.winGold();
+    if (this.props.everyEquipmentCollected) {
+      this.setState({ gameWin: true });
+      this.gameOver();
+    }
   }
 
   winGold = () => {
@@ -181,7 +180,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   battleLost = () => {
-    if (this.props.gold - this.state.loseAmount <= 0) {
+    if ((this.props.gold - this.state.loseAmount <= 0) || this.props.everyEquipmentCollected) {
       this.gameOver();
     } else {
       this.loseGold();
@@ -200,79 +199,88 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   render() {
-    const { gold, herosEquipment } = this.props;
-
     return (
       <div>
-        {this.state.gameOver
-        ? 
-          <GameOver />
+        {this.state.gameWin
+        ?
+          <GameWin />
         :
-          <div className="battlefield">
-            <h1>Battlefield</h1>
+          this.state.gameOver
+          ? 
+            <GameOver />
+          :
+            <div className="battlefield">
+              <h1>Battlefield</h1>
 
-            <div className="battlefield-characters">
-              <div className="battlefield-character hero-character">
-                <div className="battlefield-hero-stats">
-                  <p>Gold: {gold}</p>
-                  <HeroStats equipment={herosEquipment} />
-                </div>
-                <LifeBar
-                  life={this.state.herosLife}
-                  fightOn={this.state.fightOn}
-                  fightOver={this.state.fightOver}
-                  hitAmount={this.state.dragonsHit}
-                />
-                <img src="/images/hero.png" alt="hero" className="battlefield-character-image" id="hero-character" />
-              </div>
-              <div className="battlefield-character dragon-character">
-                <div className="battlefied-dragon-stats">
-                  <DragonStats
-                    maxHit={this.state.maxHitForDragon}
-                    minHit={this.state.minHitForDragon}
+              <div className="battlefield-characters">
+                <div className="battlefield-character hero-character">
+                  <div className="battlefield-hero-stats">
+                    <HeroStats />
+                  </div>
+                  <LifeBar
+                    life={this.state.herosLife}
+                    fightOn={this.state.fightOn}
+                    fightOver={this.state.fightOver}
+                    hitAmount={this.state.dragonsHit}
                   />
+                  <img src="/images/hero.png" alt="hero" className="battlefield-character-image" id="hero-character" />
                 </div>
-                <LifeBar
-                  life={this.state.dragonsLife}
-                  fightOn={this.state.fightOn}
-                  fightOver={this.state.fightOver}
-                  hitAmount={this.state.herosHit}
-                />
-                <img src="/images/dragon.png" alt="dragon" className="battlefield-character-image" id="dragon-character" />
+                <div className="battlefield-character dragon-character">
+                  <div className="battlefied-dragon-stats">
+                    <DragonStats
+                      maxHit={this.state.maxHitForDragon}
+                    />
+                  </div>
+                  <LifeBar
+                    life={this.state.dragonsLife}
+                    fightOn={this.state.fightOn}
+                    fightOver={this.state.fightOver}
+                    hitAmount={this.state.herosHit}
+                  />
+                  {this.props.everyEquipmentCollected
+                  ?
+                    <img src="/images/dragon-boss.png" alt="dragon" className="battlefield-character-image" id="dragon-character" />
+                  :
+                    <img src="/images/dragon.png" alt="dragon" className="battlefield-character-image" id="dragon-character" />
+                  }
+                </div>
+              </div>
+
+              <div className="battlefield-actions">
+                {this.state.fightOn
+                ?
+                  <button className="button battlefield-fight-button disabled" disabled>Fight</button>
+                :
+                  <button className="button battlefield-fight-button" onClick={this.startFight}>Fight</button>
+                }
+                {this.state.fightOver && !this.state.fightOn  && this.state.heroWon
+                ? <p>You won!</p>
+                : null}
+                {this.state.fightOver && !this.state.fightOn  && !this.state.heroWon
+                ? <p>You lost!</p>
+                : null}
               </div>
             </div>
-
-            <div className="battlefield-actions">
-              {this.state.fightOn
-              ?
-                <button className="button battlefield-fight-button disabled" disabled>Fight</button>
-              :
-                <button className="button battlefield-fight-button" onClick={this.startFight}>Fight</button>
-              }
-              {this.state.fightOver && !this.state.fightOn  && this.state.heroWon
-              ? <p>You won!</p>
-              : null}
-              {this.state.fightOver && !this.state.fightOn  && !this.state.heroWon
-              ? <p>You lost!</p>
-              : null}
-            </div>
-          </div>
-        }
+          }
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: MapStateProps) => ({
-  gold: state.heroReducer.gold,
   herosLife: state.heroReducer.life,
+  attack: state.heroReducer.attack,
+  defense: state.heroReducer.defense,
+  maxHitForHero: state.heroReducer.maxHit,
+  everyEquipmentCollected: state.heroReducer.everyEquipmentCollected,
   herosEquipment: state.heroReducer.equipment
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   winGold: (amount: number) => dispatch(winGold(amount)),
   loseGold: (amount: number) => dispatch(loseGold(amount)),
-  gameOver: () => dispatch(gameOver())
+  gameOver: () => dispatch(gameOver()),
+  incrementRoundsFought: () => dispatch(incrementRoundsFought())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Battlefield);

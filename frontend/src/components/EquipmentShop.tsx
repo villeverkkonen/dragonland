@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import EquipmentForSale from './EquipmentForSale';
 import { EquipmentType } from '../store/equipment/types';
+import { everyEquipmentCollected } from '../store/hero/actions';
 
 interface EquipmentShopProps {
   equipment: EquipmentType[];
   herosEquipment: EquipmentType[];
   gold: number;
+  everyEquipmentCollected: () => void;
 }
 
 interface EquipmentShopState {
@@ -19,7 +21,21 @@ interface EquipmentShopState {
   }
 }
 
+interface DispatchProps {
+  everyEquipmentCollected: () => void;
+}
+
 class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopState> {
+
+  componentDidUpdate() {
+    if (this.props.herosEquipment.length === this.props.equipment.length) {
+      this.everyEquipmentCollected();
+    }
+  }
+
+  everyEquipmentCollected = () => {
+    this.props.everyEquipmentCollected();
+  }
 
   render() {
     const { equipment, herosEquipment, gold } = this.props as EquipmentShopProps;
@@ -33,7 +49,7 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
               !herosEquipment.includes(equipment)
               ?
                 <div className="grid-item" key={equipment.id}>
-                  <EquipmentForSale equipment={equipment}/>
+                  <EquipmentForSale equipment={equipment} />
                 </div>
               : null
             ))}
@@ -50,4 +66,11 @@ const mapStateToProps = (state: EquipmentShopState) => ({
   herosEquipment: state.heroReducer.equipment
 });
 
-export default connect(mapStateToProps)(EquipmentShop);
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+  everyEquipmentCollected: () => dispatch(everyEquipmentCollected())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EquipmentShop);

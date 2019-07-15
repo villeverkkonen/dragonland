@@ -8,10 +8,6 @@ const DragonStats = (props: any) => {
         <span className="left-column">Max hit: </span>
         <span className="right-column">{props.maxHit}</span>
       </p>
-      <p>
-        <span className="left-column">Min hit: </span>
-        <span className="right-column">{props.minHit}</span>
-      </p>
     </div>
   );
 }

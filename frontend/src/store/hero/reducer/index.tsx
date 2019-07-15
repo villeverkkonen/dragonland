@@ -5,7 +5,9 @@ import {
   LOSE_GOLD,
   GAME_OVER,
   GAIN_LIFE,
-  LOSE_LIFE
+  LOSE_LIFE,
+  EVERY_EQUIPMENT_COLLECTED,
+  INCREMENT_ROUNDS_FOUGHT
 } from '../actions';
 import { EquipmentType } from '../../equipment/types';
 import { HeroType } from '../types';
@@ -14,6 +16,11 @@ const initialState: HeroType = {
   name: '',
   gold: 0,
   life: 0,
+  attack: 0,
+  defense: 0,
+  maxHit: 30,
+  everyEquipmentCollected: false,
+  roundsFought: 0,
   equipment: []
 };
 
@@ -24,16 +31,28 @@ export function heroReducer(
       case CREATE_HERO:
         return {
           ...state,
-          gold: 10,
+          gold: 100,
           life: 100,
           name: action.name
         };
       case BUY_EQUIPMENT:
-        const newEquipmentList = state.equipment.concat(action.equipment);
+        let attack = 0;
+        let defense = 0;
+        action.equipment.stats.map(stat => {
+          if (stat.title.toLowerCase() === 'attack') {
+            attack = stat.points
+          } else if (stat.title.toLowerCase() === 'defense') {
+            defense = stat.points
+          }
+          return null;
+        });
         return {
           ...state,
           gold: state.gold - action.equipment.price,
-          equipment: newEquipmentList
+          attack: state.attack + attack,
+          defense: state.defense + defense,
+          maxHit: state.maxHit + attack,
+          equipment: state.equipment.concat(action.equipment)
         };
       case WIN_GOLD:
         return {
@@ -63,11 +82,26 @@ export function heroReducer(
           ...state,
           life: newLifeAmount
         };
+      case INCREMENT_ROUNDS_FOUGHT:
+        return {
+          ...state,
+          roundsFought: state.roundsFought + 1
+        }
+      case EVERY_EQUIPMENT_COLLECTED:
+        return {
+          ...state,
+          everyEquipmentCollected: true
+        }
       case GAME_OVER:
         return {
           name: '',
           gold: 0,
           life: 0,
+          attack: 0,
+          defense: 0,
+          maxHit: 30,
+          everyEquipmentCollected: false,
+          roundsFought: 0,
           equipment: []
         };
       default:

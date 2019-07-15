@@ -1,46 +1,61 @@
 import React from 'react';
-import { EquipmentType } from '../store/equipment/types';
+import { connect } from 'react-redux';
 
-interface EquipmentProps {
-  equipment: EquipmentType[];
+interface HeroStatsProps {
+  gold: number;
+  attack: number;
+  defense: number;
+  maxHit: number;
+  roundsFought: number;
 }
 
-const HeroStats = (props: EquipmentProps) => {
-  let attack = 0, defense = 0, maxHit = 30;
+interface HeroStatsState {
+  heroReducer: {
+    gold: number;
+    attack: number;
+    defense: number;
+    maxHit: number;
+    roundsFought: number;
+  }
+}
 
-  props.equipment.map(equip => {
+export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
+  render() {
+    let { attack, defense, maxHit, roundsFought, gold } = this.props;
+
     return (
-      equip.stats.map(stat => {
-        if (stat.title.toLowerCase() === "attack") {
-          return attack += stat.points;
-        } else if (stat.title.toLowerCase() === "defense") {
-          return defense += stat.points;
-        }
-        return null;
-      })
+      <div className="hero-stats">
+        <p>
+          <span className="left-column">Rounds fought:</span>
+          <span className="right-column">{roundsFought}</span>
+        </p>
+        <p>
+          <span className="left-column">Gold:</span>
+          <span className="right-column">{gold}</span>
+        </p>
+        <p>
+          <span className="left-column">Attack:</span>
+          <span className="right-column">{attack}</span>
+        </p>
+        <p>
+          <span className="left-column">Defense:</span>
+          <span className="right-column">{defense}</span>
+        </p>
+        <p>
+          <span className="left-column">Max hit:</span>
+          <span className="right-column">{maxHit}</span>
+        </p>
+      </div>
     );
-  });
-
-  return (
-    <div className="hero-stats">
-      <p>
-        <span className="left-column">Attack: </span>
-        <span className="right-column">{attack}</span>
-      </p>
-      <p>
-        <span className="left-column">Defense: </span>
-        <span className="right-column">{defense}</span>
-      </p>
-      <p>
-        <span className="left-column">Max hit: </span>
-        <span className="right-column">{maxHit + attack}</span>
-      </p>
-      <p>
-        <span className="left-column">Min hit: </span>
-        <span className="right-column">{attack}</span>
-      </p>
-    </div>
-  );
+  }
 }
 
-export default HeroStats;
+const mapStateToProps = (state: HeroStatsState) => ({
+  gold: state.heroReducer.gold,
+  attack: state.heroReducer.attack,
+  defense: state.heroReducer.defense,
+  maxHit: state.heroReducer.maxHit,
+  roundsFought: state.heroReducer.roundsFought
+});
+
+export default connect(mapStateToProps)(HeroStats);
