@@ -60,22 +60,27 @@ a {
 .home {
   margin: 10px;
 
-  .home-instuctions {
+  .home-introduction {
     font-size: 28px;
+    margin-bottom: 20px;
 
-    .home-instruction-1 {
+    .home-introduction-1 {
       display: block;
     }
 
-    .home-instruction-2 {
+    .home-introduction-2 {
       margin-left: 10px;
       display: block;
     }
 
-    .home-instruction-3 {
+    .home-introduction-3 {
       margin-left: 20px;
       display: block;
     }
+  }
+
+  .home-info {
+    font-size: 18px;
   }
 }
 
@@ -86,7 +91,6 @@ a {
     width: 7.5em;
     display: inline-block;
     text-align: left;
-    float: left;
   }
 }
 
@@ -268,5 +272,17 @@ a {
     position: absolute;
     margin: 4px;
     color: gold;
+  }
+}
+
+.highscores {
+  margin-top: 20px;
+
+  table {
+    text-align: left;
+  }
+
+  table .center-column {
+    padding: 0 5px 0 5px;
   }
 }

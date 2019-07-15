@@ -1,4 +1,5 @@
 import React from 'react';
+import Highscores from './Highscores';
 
 const GameOver = () => {
   return (
@@ -7,6 +8,7 @@ const GameOver = () => {
       <h3>Try again with a new hero!</h3>
       <img src="/images/dragon.png" alt="dragon" className="gameover-dragon reverse-img" />
       <img src="/images/dragon.png" alt="dragon" className="gameover-dragon" />
+      <Highscores />
     </div>
   );
 }

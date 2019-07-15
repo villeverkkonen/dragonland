@@ -20,6 +20,7 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
 frontend/.env
+.env
 
 # dependencies
 node_modules

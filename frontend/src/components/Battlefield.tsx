@@ -7,14 +7,17 @@ import DragonStats from './DragonStats';
 import GameOver from './GameOver';
 import GameWin from './GameWin';
 import LifeBar from './LifeBar';
+import highscores from '../services/highscores';
 
 interface BattlefieldProps {
+  name: string;
+  roundsFought: number;
+  gold: number;
   fightOn: boolean;
   fightOver: boolean;
   heroWon: boolean;
   winAmount: number;
   loseAmount: number;
-  gold: number;
   herosLife: number;
   attack: number;
   defense: number;
@@ -40,10 +43,14 @@ interface BattlefieldState {
   dragonsLife: number;
   dragonsHit: number;
   maxHitForDragon: number;
+  extraHitForGreenDragon: number;
 }
 
 interface MapStateProps {
   heroReducer: {
+    name: string;
+    roundsFought: number;
+    gold: number;
     life: number;
     equipment: EquipmentType[];
     attack: number;
@@ -75,14 +82,15 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       herosLife: 100,
       dragonsLife: 100,
       dragonsHit: 0,
-      maxHitForDragon: 40
+      maxHitForDragon: 35,
+      extraHitForGreenDragon: 12
     }
   }
 
   componentDidMount() {
     if (this.props.everyEquipmentCollected) {
       this.setState({
-        maxHitForDragon: this.state.maxHitForDragon - this.props.defense + 20
+        maxHitForDragon: this.state.maxHitForDragon - this.props.defense + this.state.extraHitForGreenDragon
       });
     } else {
       this.setState({
@@ -156,7 +164,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     this.fight();
   }
 
-  battleOver = () => {
+  battleOver = async () => {
     let heroWon: boolean;
     this.state.herosLife > 0 ? heroWon = true : heroWon = false;
     this.setState({
@@ -164,15 +172,24 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       fightOver: true,
       heroWon
     });
-    heroWon ? this.battleWon() : this.battleLost();
+    heroWon ? await this.battleWon() : await this.battleLost();
   }
 
-  battleWon = () => {
+  battleWon = async () => {
     this.winGold();
     if (this.props.everyEquipmentCollected) {
-      this.setState({ gameWin: true });
-      this.gameOver();
+      await this.newHighscore();
+      await this.gameWin();
     }
+  }
+
+  newHighscore = () => {
+    const highscore = {
+      name: this.props.name,
+      roundsFought: this.props.roundsFought,
+      gold: this.props.gold
+    }
+    return highscores.newHighscore(highscore);
   }
 
   winGold = () => {
@@ -191,7 +208,13 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     this.props.loseGold(this.state.loseAmount);
   }
 
-  gameOver = () => {
+  gameWin = async () => {
+    await this.wait(500);
+    this.setState({ gameWin: true });
+    this.gameOver();
+  }
+
+  gameOver = async () => {
     this.setState({
       gameOver: true
     });
@@ -268,6 +291,9 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
 }
 
 const mapStateToProps = (state: MapStateProps) => ({
+  name: state.heroReducer.name,
+  roundsFought: state.heroReducer.roundsFought,
+  gold: state.heroReducer.gold,
   herosLife: state.heroReducer.life,
   attack: state.heroReducer.attack,
   defense: state.heroReducer.defense,

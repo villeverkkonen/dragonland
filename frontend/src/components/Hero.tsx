@@ -40,7 +40,7 @@ export class Hero extends React.Component<HeroProps, any> {
   }
 
   createHero = () => {
-    if (this.state.name.length > 0) {
+    if (this.state.name.length > 0 && this.state.name.length < 16) {
       this.props.createHero(this.state.name);
     } else {
       this.setState({ nameRequiredWarning: true });
@@ -56,7 +56,7 @@ export class Hero extends React.Component<HeroProps, any> {
           <div className="hero-form">
             <h3>Create a hero</h3>
             {this.state.nameRequiredWarning
-            ? <div className="name-required-warning"><p>Please enter name</p></div>
+            ? <div className="name-required-warning"><p>Name has to be 1-15 characters</p></div>
             : null}
             <label htmlFor="input-name">Name:</label>
             <input type="text" id="input-name" onChange={this.handleNameChange} autoFocus />

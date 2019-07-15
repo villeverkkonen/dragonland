@@ -31,7 +31,7 @@ export function heroReducer(
       case CREATE_HERO:
         return {
           ...state,
-          gold: 100,
+          gold: 10,
           life: 100,
           name: action.name
         };
