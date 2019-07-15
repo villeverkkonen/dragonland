@@ -44,6 +44,7 @@ interface BattlefieldState {
   dragonsHit: number;
   maxHitForDragon: number;
   extraHitForGreenDragon: number;
+  showWinner: boolean;
 }
 
 interface MapStateProps {
@@ -83,7 +84,8 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
       dragonsLife: 100,
       dragonsHit: 0,
       maxHitForDragon: 35,
-      extraHitForGreenDragon: 12
+      extraHitForGreenDragon: 12,
+      showWinner: false
     }
   }
 
@@ -170,9 +172,12 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
     this.setState({
       fightOn: false,
       fightOver: true,
+      showWinner: true,
       heroWon
     });
-    heroWon ? await this.battleWon() : await this.battleLost();
+    heroWon ? this.battleWon() : this.battleLost();
+    await this.wait(2000);
+    this.setState({ showWinner: false });
   }
 
   battleWon = async () => {
@@ -276,10 +281,10 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
                 :
                   <button className="button battlefield-fight-button" onClick={this.startFight}>Fight</button>
                 }
-                {this.state.fightOver && !this.state.fightOn  && this.state.heroWon
+                {this.state.fightOver && !this.state.fightOn  && this.state.heroWon && this.state.showWinner
                 ? <p>You won!</p>
                 : null}
-                {this.state.fightOver && !this.state.fightOn  && !this.state.heroWon
+                {this.state.fightOver && !this.state.fightOn  && !this.state.heroWon && this.state.showWinner
                 ? <p>You lost!</p>
                 : null}
               </div>

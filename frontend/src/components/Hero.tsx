@@ -67,8 +67,7 @@ export class Hero extends React.Component<HeroProps, any> {
         {name && name.length > 0
         ?
           <div className="hero-info">
-            <h3>Your hero:</h3>
-            <p>Name: {name}</p>
+            <h3>{name}</h3>
             <HeroStats />
             <h3>Equipments:</h3>
             {equipment && equipment.length > 0
