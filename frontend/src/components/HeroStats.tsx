@@ -26,7 +26,7 @@ export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
     return (
       <div className="hero-stats">
         <p>
-          <span className="left-column">Rounds fought:</span>
+          <span className="left-column">Rounds:</span>
           <span className="right-column">{roundsFought}</span>
         </p>
         <p>
