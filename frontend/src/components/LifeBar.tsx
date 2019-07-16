@@ -12,17 +12,6 @@ interface LifeBarState {
 }
 
 export class LifeBar extends React.Component<LifeBarProps, LifeBarState> {
-  constructor(props: LifeBarProps) {
-    super(props);
-    this.state = {
-      life: 0
-    }
-  }
-
-  componentDidMount() {
-    this.setState({ life: this.props.life });
-  }
-
   render() {
     const lifeBarStyles = {
       width: `${this.props.life}%`
