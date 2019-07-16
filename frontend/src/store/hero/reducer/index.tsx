@@ -33,7 +33,7 @@ export function heroReducer(
       case CREATE_HERO:
         return {
           ...state,
-          gold: 5,
+          gold: 4,
           life: 100,
           maxHit: 30,
           name: action.name

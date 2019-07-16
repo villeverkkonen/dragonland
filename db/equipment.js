@@ -32,7 +32,7 @@ const equipment = [
         points: 2
       }
     ],
-    price: 5,
+    price: 4,
     imageUrl: "/images/sword.png"
   },
   {
@@ -44,7 +44,7 @@ const equipment = [
         points: 2
       }
     ],
-    price: 5,
+    price: 4,
     imageUrl: "/images/helmet.png"
   },
   {
@@ -72,7 +72,7 @@ const equipment = [
         points: 2
       }
     ],
-    price: 10,
+    price: 8,
     imageUrl: "/images/dual_swords.png"
   }
 ];
