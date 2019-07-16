@@ -35,6 +35,7 @@ export function heroReducer(
           ...state,
           gold: 5,
           life: 100,
+          maxHit: 30,
           name: action.name
         };
       case BUY_EQUIPMENT:
