@@ -14,7 +14,7 @@ const newHighscore = (highscore: Object) => {
 };
 
 function compare(a: any, b: any) {
-  return a.roundsFought - b.roundsFought || b.gold - a.gold;
+  return a.roundsFought - b.roundsFought || a.hits - b.hits || b.gold - a.gold;
 }
 
 export default {

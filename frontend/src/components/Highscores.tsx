@@ -5,6 +5,7 @@ interface Highscore {
   id: string;
   name: string;
   roundsFought: number;
+  hits: number;
   gold: number;
 };
 
@@ -33,7 +34,8 @@ export class Highscores extends React.Component<any, HighscoresState> {
           <thead>
             <tr>
               <th>Name</th>
-              <th className="center-column">Rounds</th>
+              <th>Rounds</th>
+              <th>Hits</th>
               <th>Gold</th>
             </tr>
           </thead>
@@ -44,7 +46,8 @@ export class Highscores extends React.Component<any, HighscoresState> {
               ? <td>{highscore.name.slice(0, 15)}</td>
               : <td>{highscore.name}</td>
               }
-              <td className="center-column">{highscore.roundsFought}</td>
+              <td>{highscore.roundsFought}</td>
+              <td>{highscore.hits}</td>
               <td>{highscore.gold}</td>
             </tr>
           ))}

@@ -9,5 +9,6 @@ export interface HeroType {
   maxHit: number;
   everyEquipmentCollected: boolean;
   roundsFought: number;
+  hits: number;
   equipment: EquipmentType[];
 };

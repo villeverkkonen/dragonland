@@ -2,32 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 interface HeroStatsProps {
+  roundsFought: number;
+  hits: number;
   gold: number;
   attack: number;
   defense: number;
   maxHit: number;
-  roundsFought: number;
 }
 
 interface HeroStatsState {
   heroReducer: {
+    roundsFought: number;
+    hits: number;
     gold: number;
     attack: number;
     defense: number;
     maxHit: number;
-    roundsFought: number;
   }
 }
 
 export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
   render() {
-    let { attack, defense, maxHit, roundsFought, gold } = this.props;
+    let { roundsFought, hits, gold, attack, defense, maxHit } = this.props;
 
     return (
       <div className="hero-stats">
         <p>
           <span className="left-column">Rounds:</span>
           <span className="right-column">{roundsFought}</span>
+        </p>
+        <p>
+          <span className="left-column">Hits:</span>
+          <span className="right-column">{hits}</span>
         </p>
         <p>
           <span className="left-column">Gold:</span>
@@ -55,7 +61,8 @@ const mapStateToProps = (state: HeroStatsState) => ({
   attack: state.heroReducer.attack,
   defense: state.heroReducer.defense,
   maxHit: state.heroReducer.maxHit,
-  roundsFought: state.heroReducer.roundsFought
+  roundsFought: state.heroReducer.roundsFought,
+  hits: state.heroReducer.hits
 });
 
 export default connect(mapStateToProps)(HeroStats);

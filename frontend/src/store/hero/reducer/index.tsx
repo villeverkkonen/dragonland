@@ -7,7 +7,8 @@ import {
   GAIN_LIFE,
   LOSE_LIFE,
   EVERY_EQUIPMENT_COLLECTED,
-  INCREMENT_ROUNDS_FOUGHT
+  INCREMENT_ROUNDS_FOUGHT,
+  INCREMENT_HITS
 } from '../actions';
 import { EquipmentType } from '../../equipment/types';
 import { HeroType } from '../types';
@@ -21,6 +22,7 @@ const initialState: HeroType = {
   maxHit: 30,
   everyEquipmentCollected: false,
   roundsFought: 0,
+  hits: 0,
   equipment: []
 };
 
@@ -31,7 +33,7 @@ export function heroReducer(
       case CREATE_HERO:
         return {
           ...state,
-          gold: 10,
+          gold: 5,
           life: 100,
           name: action.name
         };
@@ -87,6 +89,11 @@ export function heroReducer(
           ...state,
           roundsFought: state.roundsFought + 1
         }
+      case INCREMENT_HITS:
+        return {
+          ...state,
+          hits: state.hits + 1
+        }
       case EVERY_EQUIPMENT_COLLECTED:
         return {
           ...state,
@@ -99,9 +106,10 @@ export function heroReducer(
           life: 0,
           attack: 0,
           defense: 0,
-          maxHit: 30,
+          maxHit: 0,
           everyEquipmentCollected: false,
           roundsFought: 0,
+          hits: 0,
           equipment: []
         };
       default:

@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import EquipmentForSale from './EquipmentForSale';
 import { EquipmentType } from '../store/equipment/types';
 import { everyEquipmentCollected } from '../store/hero/actions';
+import { Redirect } from 'react-router';
 
 interface EquipmentShopProps {
   equipment: EquipmentType[];
   herosEquipment: EquipmentType[];
   gold: number;
+  name: string;
   everyEquipmentCollected: () => void;
 }
 
@@ -18,6 +20,7 @@ interface EquipmentShopState {
   heroReducer: {
     gold: number;
     equipment: EquipmentType[];
+    name: string;
   }
 }
 
@@ -38,7 +41,12 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
   }
 
   render() {
-    const { equipment, herosEquipment, gold } = this.props as EquipmentShopProps;
+    const { equipment, herosEquipment, gold, name } = this.props as EquipmentShopProps;
+
+    if (!name) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div>
         <h3>Gold: {gold}</h3>
@@ -63,7 +71,8 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
 const mapStateToProps = (state: EquipmentShopState) => ({
   equipment: state.equipmentReducer.equipment,
   gold: state.heroReducer.gold,
-  herosEquipment: state.heroReducer.equipment
+  herosEquipment: state.heroReducer.equipment,
+  name: state.heroReducer.name
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({

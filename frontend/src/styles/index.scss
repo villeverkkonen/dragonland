@@ -206,6 +206,10 @@ a {
     text-align: center;
     position: relative;
 
+    .invisible-img {
+      opacity: 0;
+    }
+
     .hero-character {
       margin-right: 10px;
       text-align: left;
@@ -286,8 +290,8 @@ a {
   table {
     text-align: left;
   }
-
-  table .center-column {
-    padding: 0 5px 0 5px;
+  
+  table th, table td {
+    padding: 5px;
   }
 }

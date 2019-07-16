@@ -1,28 +1,28 @@
 const equipment = [
-  {
-    id: 1,
-    title: "Woodcutting Axe",
-    stats: [
-      {
-        title: "Attack",
-        points: 1
-      }
-    ],
-    price: 4,
-    imageUrl: "/images/axe.png"
-  },
-  {
-    id: 2,
-    title: "Elven Boots",
-    stats: [
-      {
-        title: "Defense",
-        points: 1
-      }
-    ],
-    price: 4,
-    imageUrl: "/images/boots.png"
-  },
+  // {
+  //   id: 1,
+  //   title: "Woodcutting Axe",
+  //   stats: [
+  //     {
+  //       title: "Attack",
+  //       points: 1
+  //     }
+  //   ],
+  //   price: 4,
+  //   imageUrl: "/images/axe.png"
+  // },
+  // {
+  //   id: 2,
+  //   title: "Elven Boots",
+  //   stats: [
+  //     {
+  //       title: "Defense",
+  //       points: 1
+  //     }
+  //   ],
+  //   price: 4,
+  //   imageUrl: "/images/boots.png"
+  // },
   {
     id: 3,
     title: "Mighty Sword of Thunder",

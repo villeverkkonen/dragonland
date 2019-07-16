@@ -25,6 +25,7 @@ highscoreRouter.post('/', async (req, res) => {
     const highscore = new Highscore({
       name: body.name,
       roundsFought: body.roundsFought,
+      hits: body.hits,
       gold: body.gold
     });
 

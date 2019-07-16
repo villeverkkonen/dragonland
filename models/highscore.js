@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const highscoreSchema = new mongoose.Schema({
   name: String,
   roundsFought: Number,
+  hits: Number,
   gold: Number
 });
 
@@ -11,6 +12,7 @@ highscoreSchema.statics.format = (highscore) => {
     id: highscore.id,
     name: highscore.name,
     roundsFought: highscore.roundsFought,
+    hits: highscore.hits,
     gold: highscore.gold
   }
 };
