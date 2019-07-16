@@ -218,7 +218,7 @@ export class Battlefield extends React.Component<BattlefieldProps, BattlefieldSt
   }
 
   battleLost = async () => {
-    if ((this.props.gold - this.state.loseAmount <= 0) || this.props.everyEquipmentCollected) {
+    if ((this.props.gold - this.state.loseAmount < 0) || this.props.everyEquipmentCollected) {
       this.gameOver();
     } else {
       this.loseGold();
