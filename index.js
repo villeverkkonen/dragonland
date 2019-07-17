@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const middleware = require('./utils/middleware');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const equipmentRouter = require('./controllers/equipment');
 const highscoreRouter = require('./controllers/highscore');
-const config = require('./utils/config')
+const config = require('./utils/config');
 
 const options = {
   useNewUrlParser: true,

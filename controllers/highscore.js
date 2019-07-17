@@ -3,9 +3,7 @@ const Highscore = require('../models/highscore');
 
 highscoreRouter.get('/', async (req, res) => {
   try {
-    const highscores = await Highscore
-      .find({});
-    
+    const highscores = await Highscore.find({});
     if (highscores) {
       res.json(highscores.map(Highscore.format));
     }

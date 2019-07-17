@@ -18,13 +18,13 @@ export class Highscores extends React.Component<any, HighscoresState> {
     super(props);
     this.state = {
       highscores: []
-    }
-  }
+    };
+  };
 
   async componentDidMount() {
     const highscores = await highscoreService.getTopTenOrdered();
     await this.setState({ highscores });
-  }
+  };
 
   render() {
     return (

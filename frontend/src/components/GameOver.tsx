@@ -11,6 +11,6 @@ const GameOver = () => {
       <Highscores />
     </div>
   );
-}
+};
 
 export default GameOver;

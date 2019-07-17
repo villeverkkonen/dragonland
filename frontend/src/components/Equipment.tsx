@@ -3,7 +3,7 @@ import { EquipmentType } from '../store/equipment/types';
 
 interface EquipmentProps {
   equipment: EquipmentType;
-}
+};
 
 const Equipment = (props: EquipmentProps) => {
   return (
@@ -19,6 +19,6 @@ const Equipment = (props: EquipmentProps) => {
       <img src={props.equipment.imageUrl} alt={props.equipment.title} className="equipment-img" />
     </div>
   );
-}
+};
 
 export default Equipment;

@@ -8,7 +8,7 @@ interface HeroStatsProps {
   attack: number;
   defense: number;
   maxHit: number;
-}
+};
 
 interface HeroStatsState {
   heroReducer: {
@@ -19,11 +19,11 @@ interface HeroStatsState {
     defense: number;
     maxHit: number;
   }
-}
+};
 
 export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
   render() {
-    let { roundsFought, hits, gold, attack, defense, maxHit } = this.props;
+    const { roundsFought, hits, gold, attack, defense, maxHit } = this.props as HeroStatsProps;
 
     return (
       <div className="hero-stats">

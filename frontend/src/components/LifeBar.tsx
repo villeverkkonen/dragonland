@@ -15,7 +15,7 @@ export class LifeBar extends React.Component<LifeBarProps, LifeBarState> {
   render() {
     const lifeBarStyles = {
       width: `${this.props.life}%`
-    }
+    };
 
     return (
       <div>

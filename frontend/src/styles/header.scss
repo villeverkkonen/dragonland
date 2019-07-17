@@ -1,0 +1,40 @@
+.header {
+  background: #AD3F26;
+
+  .logo {
+    width: 4em;
+    margin: 5px;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 0.8em;
+    display: inline-block;
+
+    .nav {
+      justify-self: left;
+
+      .nav-ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        .nav-li {
+          float: left;
+          margin: 5px;
+
+          .nav-link {
+            padding: 1em;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            color: white;
+
+            &:hover {
+              background: rgb(0, 0, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+}

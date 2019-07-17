@@ -9,18 +9,18 @@ interface HeroProps {
   name: string;
   equipment: EquipmentType[];
   createHero: (name: string) => void;
-}
+};
 
 interface HeroState {
   heroReducer: {
     name: string;
     equipment: EquipmentType[]
   }
-}
+};
 
 interface DispatchProps {
   createHero: (name: string) => void;
-}
+};
 
 type createHeroParam = React.SyntheticEvent<{ value: string }>;
 
@@ -30,14 +30,14 @@ export class Hero extends React.Component<HeroProps, any> {
     this.state = {
       name: '',
       nameRequiredWarning: false
-    }
-  }
+    };
+  };
 
   handleNameChange = (event: createHeroParam) => {
     this.setState({
       name: event.currentTarget.value
-    })
-  }
+    });
+  };
 
   createHero = () => {
     if (this.state.name.length > 0 && this.state.name.length < 16) {
@@ -45,10 +45,10 @@ export class Hero extends React.Component<HeroProps, any> {
     } else {
       this.setState({ nameRequiredWarning: true });
     }
-  }
+  };
 
   render() {
-    const { name, equipment } = this.props;
+    const { name, equipment } = this.props as HeroProps;
 
     return (
       <div>

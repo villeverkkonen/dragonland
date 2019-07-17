@@ -4,7 +4,7 @@ import {
 import { EquipmentType } from '../../equipment/types';
 
 interface State {
-  equipment?: EquipmentType[];
+  equipment: EquipmentType[];
 }
 
 const initialState: State = {
@@ -13,7 +13,7 @@ const initialState: State = {
 
 export function equipmentReducer(
   state = initialState,
-  action: { type: string, equipment?: EquipmentType[] }) {
+  action: { type: string, equipment: EquipmentType[] }) {
     switch (action.type) {
       case FETCH_EQUIPMENT:
         return {

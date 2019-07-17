@@ -11,7 +11,7 @@ interface EquipmentShopProps {
   gold: number;
   name: string;
   everyEquipmentCollected: () => void;
-}
+};
 
 interface EquipmentShopState {
   equipmentReducer: {
@@ -22,11 +22,11 @@ interface EquipmentShopState {
     equipment: EquipmentType[];
     name: string;
   }
-}
+};
 
 interface DispatchProps {
   everyEquipmentCollected: () => void;
-}
+};
 
 class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopState> {
 
@@ -34,11 +34,11 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
     if (this.props.herosEquipment.length === this.props.equipment.length) {
       this.everyEquipmentCollected();
     }
-  }
+  };
 
   everyEquipmentCollected = () => {
     this.props.everyEquipmentCollected();
-  }
+  };
 
   render() {
     const { equipment, herosEquipment, gold, name } = this.props as EquipmentShopProps;
@@ -64,8 +64,8 @@ class EquipmentShop extends React.Component<EquipmentShopProps, EquipmentShopSta
           </div>
         : null}
       </div>
-    )
-  }
+    );
+  };
 }
 
 const mapStateToProps = (state: EquipmentShopState) => ({

@@ -1,7 +1,10 @@
 import React from 'react';
 
-const DragonStats = (props: any) => {
+interface DragonStatsProps {
+  maxHit: number;
+};
 
+const DragonStats = (props: DragonStatsProps) => {
   return (
     <div className="dragon-stats">
       <p>
@@ -10,6 +13,6 @@ const DragonStats = (props: any) => {
       </p>
     </div>
   );
-}
+};
 
 export default DragonStats;

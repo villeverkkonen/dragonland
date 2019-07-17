@@ -28,11 +28,6 @@ a {
   cursor: url('/sword.cur'), pointer;
 }
 
-.disabled {
-  cursor: not-allowed;
-  background-color: rgb(67, 69, 71);
-}
-
 .grid-container {
   background-color: #0755A0;
   padding: 10px;
@@ -57,40 +52,9 @@ a {
   height: 10em;
 }
 
-.home {
-  margin: 10px;
-
-  .home-introduction {
-    font-size: 28px;
-    margin-bottom: 20px;
-
-    .home-introduction-1 {
-      display: block;
-    }
-
-    .home-introduction-2 {
-      margin-left: 10px;
-      display: block;
-    }
-
-    .home-introduction-3 {
-      margin-left: 20px;
-      display: block;
-    }
-  }
-
-  .home-info {
-    font-size: 18px;
-
-    .home-info-row {
-      margin-bottom: 5px;
-      display: block;
-    }
-  }
-}
-
 .hero-stats {
   line-height: 0.2em;
+  margin: 10px 0 10px 0;
 
   .left-column {
     width: 4.5em;
@@ -137,112 +101,12 @@ a {
     display: block;
   }
 
-  .owned {
-    background-color: #166D64;
-  }
-
   .no-gold {
     background-color: #EAB12F;
   }
 
   .owned:hover, .no-gold:hover {
     cursor: not-allowed;
-  }
-}
-
-.header {
-  background: #AD3F26;
-
-  .logo {
-    width: 4em;
-    margin: 5px;
-  }
-
-  .container {
-    margin: 0 auto;
-    padding: 0.8em;
-    display: inline-block;
-
-    .nav {
-      justify-self: left;
-
-      .nav-ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-
-        .nav-li {
-          float: left;
-          margin: 5px;
-
-          .nav-link {
-            padding: 1em;
-            text-transform: uppercase;
-            font-size: 1.2em;
-            color: white;
-
-            &:hover {
-              background: rgb(0, 0, 0);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.battlefield {
-
-  .battlefield-stats {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .battlefield-characters {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
-    position: relative;
-
-    .invisible-img {
-      opacity: 0;
-    }
-
-    .hero-character {
-      margin-right: 10px;
-      text-align: left;
-
-      .lifebar-background {
-        margin: 0;
-      }
-    }
-
-    .dragon-character {
-      position: absolute;
-      bottom: 0;
-      left: 120px;
-    }
-
-    .battlefield-damage {
-      color: red;
-      text-align: center;
-      height: 20px;
-      display: block;
-    }
-  }
-
-  .battlefield-character-image {
-    height: 10em;
-  }
-
-  .battlefield-hero-stats {
-    margin: 10px 0 10px 0;
-  }
-
-  .battlefield-actions {
-    margin-top: 20px;
   }
 }
 

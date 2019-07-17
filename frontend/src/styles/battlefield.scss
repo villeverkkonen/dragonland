@@ -1,0 +1,50 @@
+.battlefield {
+
+  .battlefield-stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .battlefield-characters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+
+    .invisible-img {
+      opacity: 0;
+    }
+
+    .hero-character {
+      margin-right: 10px;
+      text-align: left;
+
+      .lifebar-background {
+        margin: 0;
+      }
+    }
+
+    .dragon-character {
+      position: absolute;
+      bottom: 0;
+      left: 120px;
+    }
+
+    .battlefield-damage {
+      color: red;
+      text-align: center;
+      height: 20px;
+      display: block;
+    }
+  }
+
+  .battlefield-character-image {
+    height: 10em;
+  }
+
+  .battlefield-actions {
+    margin-top: 20px;
+  }
+}

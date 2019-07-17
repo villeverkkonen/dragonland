@@ -8,26 +8,27 @@ interface EquipmentForSaleProps {
   herosEquipment: EquipmentType[];
   equipment: EquipmentType;
   buyEquipment: (equipment: EquipmentType) => void;
-}
+};
 
 interface EquipmentForSaleState {
   heroReducer: {
     gold: number;
     equipment: EquipmentType[];
   }
-}
+};
 
 interface DispatchProps {
   buyEquipment: (equipment: EquipmentType) => void;
-}
+};
 
 export class EquipmentForSale extends React.Component<EquipmentForSaleProps, EquipmentForSaleState> {
+  
   buyEquipment = (equipment: EquipmentType) => {
     this.props.buyEquipment(equipment);
-  }
+  };
 
   render() {
-    const { gold, herosEquipment } = this.props;
+    const { gold, herosEquipment } = this.props as EquipmentForSaleProps;
     return (
       <div className="equipment-for-sale">
         <p>{this.props.equipment.title}</p>
@@ -46,9 +47,7 @@ export class EquipmentForSale extends React.Component<EquipmentForSaleProps, Equ
         ?
           <button onClick={() => this.buyEquipment(this.props.equipment)} className="button buy-equipment-btn">Buy</button>
         :
-          herosEquipment.includes(this.props.equipment)
-          ? <button disabled className="button buy-equipment-btn owned">Owned</button>
-          : <button disabled className="button buy-equipment-btn no-gold">No gold</button>
+          <button disabled className="button buy-equipment-btn no-gold">No gold</button>
         }
       </div>
     );

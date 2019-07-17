@@ -43,9 +43,9 @@ export function heroReducer(
         let defense = 0;
         action.equipment.stats.map(stat => {
           if (stat.title.toLowerCase() === 'attack') {
-            attack = stat.points
+            attack = stat.points;
           } else if (stat.title.toLowerCase() === 'defense') {
-            defense = stat.points
+            defense = stat.points;
           }
           return null;
         });
@@ -89,17 +89,17 @@ export function heroReducer(
         return {
           ...state,
           roundsFought: state.roundsFought + 1
-        }
+        };
       case INCREMENT_HITS:
         return {
           ...state,
           hits: state.hits + 1
-        }
+        };
       case EVERY_EQUIPMENT_COLLECTED:
         return {
           ...state,
           everyEquipmentCollected: true
-        }
+        };
       case GAME_OVER:
         return {
           name: '',

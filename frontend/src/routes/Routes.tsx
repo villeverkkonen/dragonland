@@ -11,7 +11,7 @@ import GameWin from '../components/GameWin';
 interface RoutesProps {
   name: string;
   fightOn: boolean;
-}
+};
 
 interface RoutesState {
   heroReducer: {
@@ -20,10 +20,11 @@ interface RoutesState {
   battlefieldReducer: {
     fightOn: boolean;
   }
-}
+};
 
 class Routes extends React.Component<RoutesProps, any> {
 
+  // Prevent click if fight is on
   checkIfFightOn = (e: MouseEvent) => {
     if (this.props.fightOn) {
       e.preventDefault();
