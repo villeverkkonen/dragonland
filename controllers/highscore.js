@@ -9,7 +9,7 @@ highscoreRouter.get('/', async (req, res) => {
     }
   } catch (exception) {
     console.log(exception);
-    res.status(500).json({ error: 'something went wrong...' })
+    res.status(500).json({ error: 'something went wrong...' });
   }
 });
 

@@ -4,13 +4,13 @@ const logger = (req, res, next) => {
   console.log('Body:  ', req.body);
   console.log('---');
   next();
-}
+};
 
 const error = (req, res) => {
   res.status(404).send({ error: 'unknown endpoint' });
-}
+};
 
 module.exports = {
   logger,
   error
-}
+};

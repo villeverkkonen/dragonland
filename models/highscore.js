@@ -14,7 +14,7 @@ highscoreSchema.statics.format = (highscore) => {
     roundsFought: highscore.roundsFought,
     hits: highscore.hits,
     gold: highscore.gold
-  }
+  };
 };
 
 const Highscore = mongoose.model('Highscore', highscoreSchema);
