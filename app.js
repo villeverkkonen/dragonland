@@ -18,11 +18,6 @@ const options = {
   reconnectInterval: 2000
 };
 
-console.log('APP mongoUrl:');
-console.log(config.mongoUrl);
-console.log('APP port:');
-console.log(config.port);
-
 mongoose
   .connect(config.mongoUrl, options)
   .then(() => {})
