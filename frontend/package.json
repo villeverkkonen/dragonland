@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint **/*.tsx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +48,12 @@
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.5",
     "@types/jest": "^24.0.15",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.5",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-jest": "^22.13.0",
+    "eslint-plugin-react": "^7.14.2",
     "jest": "24.7.1",
     "ts-jest": "^24.0.2"
   }

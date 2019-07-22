@@ -1,17 +1,17 @@
 module.exports = {
   "env": {
-      "es6": true,
-      "node": true,
-      "jest": true
+    "es6": true,
+    "node": true,
+    "jest": true
   },
   "extends": "eslint:recommended",
   "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "rules": {
     "indent": [
@@ -19,16 +19,16 @@ module.exports = {
         2
     ],
     "linebreak-style": [
-        "error",
-        "windows"
+      "error",
+      "windows"
     ],
     "quotes": [
-        "error",
-        "single"
+      "error",
+      "single"
     ],
     "semi": [
-        "error",
-        "always"
+      "error",
+      "always"
     ],
     "no-console": "off"
   }

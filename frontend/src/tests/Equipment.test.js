@@ -28,6 +28,12 @@ test('renders equipment', () => {
       equipment={equipment}
     />
   );
+
+  component.debug();
+  
   const titleParagraph = component.container.getElementsByClassName('equipment')[0];
   expect(titleParagraph.childNodes[0].textContent).toBe('TestEquipment');
+
+  const element = component.getByText('TestEquipment');
+  expect(element).toBeDefined();
 });

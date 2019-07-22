@@ -20,6 +20,6 @@ const Home = () => {
       <HighScores />
     </div>
   );
-}
+};
 
 export default Home;

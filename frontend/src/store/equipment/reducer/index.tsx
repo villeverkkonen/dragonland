@@ -14,14 +14,14 @@ const initialState: State = {
 export function equipmentReducer(
   state = initialState,
   action: { type: string, equipment: EquipmentType[] }) {
-    switch (action.type) {
-      case FETCH_EQUIPMENT:
-        return {
-          equipment: action.equipment
-        };
-      default:
-        return state;
-    };
+  switch (action.type) {
+    case FETCH_EQUIPMENT:
+      return {
+        equipment: action.equipment
+      };
+    default:
+      return state;
+  };
 };
 
 export default equipmentReducer;

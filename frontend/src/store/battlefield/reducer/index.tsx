@@ -13,14 +13,14 @@ const initialState: State = {
 export function battlefieldReducer(
   state = initialState,
   action: { type: string }) {
-    switch (action.type) {
-      case SWITCH_FIGHT_ON:
-        return {
-          fightOn: !state.fightOn
-        };
-      default:
-        return state;
-    };
+  switch (action.type) {
+    case SWITCH_FIGHT_ON:
+      return {
+        fightOn: !state.fightOn
+      };
+    default:
+      return state;
+  };
 };
 
 export default battlefieldReducer;
