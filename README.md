@@ -15,6 +15,11 @@ Losing a fight: -2 gold
 
 ### [App in Heroku](https://dragon-land.herokuapp.com/)
 
+- React
+- Redux
+- TypeScript
+- Node
+
 ![Shop](https://github.com/villeverkkonen/dragonland/blob/master/documentation/images/shop.png)
 
 ![Battlefield](https://github.com/villeverkkonen/dragonland/blob/master/documentation/images/battlefield.png)
