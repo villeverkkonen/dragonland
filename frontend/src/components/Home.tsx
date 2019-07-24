@@ -15,7 +15,7 @@ const Home = () => {
         <span className="home-info-row">Green Dragon, the final boss, appears when you have collected all the equipment.</span>
         <span className="home-info-row">Below zero gold or getting crushed by the Green Dragon ends the game.</span>
         <span className="home-info-row">Winning a fight: +3 gold</span>
-        <span className="home-info-row">Losing a fight: -2 gold.</span>
+        <span className="home-info-row">Losing a fight: -2 gold</span>
       </div>
       <HighScores />
     </div>
