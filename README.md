@@ -19,6 +19,7 @@ Losing a fight: -2 gold
 - Redux
 - TypeScript
 - Node
+- MongoDB
 
 ![Shop](https://github.com/villeverkkonen/dragonland/blob/master/documentation/images/shop.png)
 
