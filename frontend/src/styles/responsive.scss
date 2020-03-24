@@ -4,14 +4,13 @@
   }
 
   .header {
-
     .logo {
       width: 3em;
     }
 
     .container .nav .nav-ul .nav-li {
       margin: 2px;
-      
+
       .nav-link {
         padding: 0.5em;
       }
@@ -19,9 +18,7 @@
   }
 
   .battlefield {
-
     .battlefield-characters {
-      
       .dragon-character {
         left: 100px;
       }
@@ -39,9 +36,7 @@
 
 @media only screen and (max-width: 400px) {
   .header {
-
     .container .nav .nav-ul .nav-li {
-      
       .nav-link {
         padding: 0.2em;
       }

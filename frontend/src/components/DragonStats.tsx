@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 interface DragonStatsProps {
-  maxHit: number;
-};
+  maxHit: number
+}
 
 const DragonStats = (props: DragonStatsProps) => {
   return (
@@ -12,7 +12,7 @@ const DragonStats = (props: DragonStatsProps) => {
         <span className="right-column">{props.maxHit}</span>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default DragonStats;
+export default DragonStats

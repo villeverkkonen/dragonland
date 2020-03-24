@@ -1,27 +1,26 @@
-import {
-  FETCH_EQUIPMENT
-} from '../actions';
-import { EquipmentType } from '../../equipment/types';
+import { FETCH_EQUIPMENT } from '../actions'
+import { EquipmentType } from '../../equipment/types'
 
 interface State {
-  equipment: EquipmentType[];
+  equipment: EquipmentType[]
 }
 
 const initialState: State = {
-  equipment: []
-};
+  equipment: [],
+}
 
 export function equipmentReducer(
   state = initialState,
-  action: { type: string, equipment: EquipmentType[] }) {
+  action: { type: string; equipment: EquipmentType[] },
+) {
   switch (action.type) {
     case FETCH_EQUIPMENT:
       return {
-        equipment: action.equipment
-      };
+        equipment: action.equipment,
+      }
     default:
-      return state;
-  };
-};
+      return state
+  }
+}
 
-export default equipmentReducer;
+export default equipmentReducer

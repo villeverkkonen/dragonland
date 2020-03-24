@@ -1,39 +1,15 @@
 const equipment = [
-  // {
-  //   id: 1,
-  //   title: 'Woodcutting Axe',
-  //   stats: [
-  //     {
-  //       title: 'Attack',
-  //       points: 1
-  //     }
-  //   ],
-  //   price: 4,
-  //   imageUrl: '/images/axe.png'
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Elven Boots',
-  //   stats: [
-  //     {
-  //       title: 'Defense',
-  //       points: 1
-  //     }
-  //   ],
-  //   price: 4,
-  //   imageUrl: '/images/boots.png'
-  // },
   {
     id: 3,
     title: 'Mighty Sword of Thunder',
     stats: [
       {
         title: 'Attack',
-        points: 2
-      }
+        points: 2,
+      },
     ],
     price: 4,
-    imageUrl: '/images/sword.png'
+    imageUrl: '/images/sword.png',
   },
   {
     id: 4,
@@ -41,11 +17,11 @@ const equipment = [
     stats: [
       {
         title: 'Defense',
-        points: 2
-      }
+        points: 2,
+      },
     ],
     price: 4,
-    imageUrl: '/images/helmet.png'
+    imageUrl: '/images/helmet.png',
   },
   {
     id: 5,
@@ -53,11 +29,11 @@ const equipment = [
     stats: [
       {
         title: 'Defense',
-        points: 3
-      }
+        points: 3,
+      },
     ],
     price: 6,
-    imageUrl: '/images/shield.png'
+    imageUrl: '/images/shield.png',
   },
   {
     id: 6,
@@ -65,16 +41,16 @@ const equipment = [
     stats: [
       {
         title: 'Attack',
-        points: 4
+        points: 4,
       },
       {
         title: 'Defense',
-        points: 2
-      }
+        points: 2,
+      },
     ],
     price: 8,
-    imageUrl: '/images/dual_swords.png'
-  }
-];
+    imageUrl: '/images/dual_swords.png',
+  },
+]
 
-module.exports = equipment;
+module.exports = equipment

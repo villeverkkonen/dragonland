@@ -1,26 +1,25 @@
-import {
-  SWITCH_FIGHT_ON
-} from '../actions';
+import { SWITCH_FIGHT_ON } from '../actions'
 
 interface State {
-  fightOn: boolean;
+  fightOn: boolean
 }
 
 const initialState: State = {
-  fightOn: false
-};
+  fightOn: false,
+}
 
 export function battlefieldReducer(
   state = initialState,
-  action: { type: string }) {
+  action: { type: string },
+) {
   switch (action.type) {
     case SWITCH_FIGHT_ON:
       return {
-        fightOn: !state.fightOn
-      };
+        fightOn: !state.fightOn,
+      }
     default:
-      return state;
-  };
-};
+      return state
+  }
+}
 
-export default battlefieldReducer;
+export default battlefieldReducer

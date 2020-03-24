@@ -1,29 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
 interface HeroStatsProps {
-  roundsFought: number;
-  hits: number;
-  gold: number;
-  attack: number;
-  defense: number;
-  maxHit: number;
-};
+  roundsFought: number
+  hits: number
+  gold: number
+  attack: number
+  defense: number
+  maxHit: number
+}
 
 interface HeroStatsState {
   heroReducer: {
-    roundsFought: number;
-    hits: number;
-    gold: number;
-    attack: number;
-    defense: number;
-    maxHit: number;
+    roundsFought: number
+    hits: number
+    gold: number
+    attack: number
+    defense: number
+    maxHit: number
   }
-};
+}
 
 export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
   render() {
-    const { roundsFought, hits, gold, attack, defense, maxHit } = this.props as HeroStatsProps;
+    const { roundsFought, hits, gold, attack, defense, maxHit } = this
+      .props as HeroStatsProps
 
     return (
       <div className="hero-stats">
@@ -52,7 +53,7 @@ export class HeroStats extends React.Component<HeroStatsProps, HeroStatsState> {
           <span className="right-column">{maxHit}</span>
         </p>
       </div>
-    );
+    )
   }
 }
 
@@ -62,7 +63,7 @@ const mapStateToProps = (state: HeroStatsState) => ({
   defense: state.heroReducer.defense,
   maxHit: state.heroReducer.maxHit,
   roundsFought: state.heroReducer.roundsFought,
-  hits: state.heroReducer.hits
-});
+  hits: state.heroReducer.hits,
+})
 
-export default connect(mapStateToProps)(HeroStats);
+export default connect(mapStateToProps)(HeroStats)

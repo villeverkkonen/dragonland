@@ -1,19 +1,19 @@
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+  require('dotenv').config()
 }
 
-let port = process.env.PORT;
-let mongoUrl = process.env.MONGODB_URI;
+let port = process.env.PORT
+let mongoUrl = process.env.MONGODB_URI
 
 if (process.env.NODE_ENV !== 'production') {
-  mongoUrl = process.env.TEST_MONGODB_URI;
+  mongoUrl = process.env.TEST_MONGODB_URI
 }
 
 if (process.env.NODE_ENV === 'test') {
-  port = process.env.TEST_PORT;
+  port = process.env.TEST_PORT
 }
 
 module.exports = {
   mongoUrl,
-  port
-};
+  port,
+}

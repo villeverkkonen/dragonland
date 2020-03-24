@@ -1,22 +1,19 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import heroReducer from './hero/reducer';
-import equipmentReducer from './equipment/reducer';
-import battlefieldReducer from './battlefield/reducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import heroReducer from './hero/reducer'
+import equipmentReducer from './equipment/reducer'
+import battlefieldReducer from './battlefield/reducer'
 
 const rootReducer = combineReducers({
   heroReducer: heroReducer,
   equipmentReducer: equipmentReducer,
-  battlefieldReducer: battlefieldReducer
-});
+  battlefieldReducer: battlefieldReducer,
+})
 
-export type AppState = ReturnType<typeof rootReducer>;
+export type AppState = ReturnType<typeof rootReducer>
 
 export default function configureStore() {
-  const store = createStore(
-    rootReducer,
-    applyMiddleware(thunk)
-  );
+  const store = createStore(rootReducer, applyMiddleware(thunk))
 
-  return store;
-};
+  return store
+}

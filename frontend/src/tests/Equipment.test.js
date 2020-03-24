@@ -1,9 +1,9 @@
-import React from 'react';
-import '@testing-library/jest-dom';
-import { render, cleanup } from '@testing-library/react';
-import Equipment from '../components/Equipment';
+import React from 'react'
+import '@testing-library/jest-dom'
+import { render, cleanup } from '@testing-library/react'
+import Equipment from '../components/Equipment'
 
-afterEach(cleanup);
+afterEach(cleanup)
 
 test('renders equipment', () => {
   const equipment = {
@@ -12,28 +12,26 @@ test('renders equipment', () => {
     stats: [
       {
         title: 'attack',
-        points: 1
+        points: 1,
       },
       {
         title: 'defense',
-        points: 1
-      }
+        points: 1,
+      },
     ],
     price: 1,
-    imageUrl: '/images/sword.png'
-  };
+    imageUrl: '/images/sword.png',
+  }
 
-  const component = render(
-    <Equipment
-      equipment={equipment}
-    />
-  );
+  const component = render(<Equipment equipment={equipment} />)
 
-  component.debug();
-  
-  const titleParagraph = component.container.getElementsByClassName('equipment')[0];
-  expect(titleParagraph.childNodes[0].textContent).toBe('TestEquipment');
+  component.debug()
 
-  const element = component.getByText('TestEquipment');
-  expect(element).toBeDefined();
-});
+  const titleParagraph = component.container.getElementsByClassName(
+    'equipment',
+  )[0]
+  expect(titleParagraph.childNodes[0].textContent).toBe('TestEquipment')
+
+  const element = component.getByText('TestEquipment')
+  expect(element).toBeDefined()
+})

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #D3B14D;
+  background-color: #d3b14d;
   font-family: 'MedievalSharp', cursive;
 }
 
@@ -20,7 +20,7 @@ a {
 .button {
   border: none;
   border-radius: 5px;
-  background-color: #28313A;
+  background-color: #28313a;
   color: white;
   font-family: 'MedievalSharp', cursive;
   padding: 5px;
@@ -29,7 +29,7 @@ a {
 }
 
 .grid-container {
-  background-color: #0755A0;
+  background-color: #0755a0;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -38,7 +38,7 @@ a {
 }
 
 .grid-item {
-  background-color: #D3C8B4;
+  background-color: #d3c8b4;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
   font-size: 16px;
@@ -68,7 +68,6 @@ a {
 }
 
 .hero-form {
-
   .name-required-warning {
     color: red;
   }
@@ -102,10 +101,11 @@ a {
   }
 
   .no-gold {
-    background-color: #EAB12F;
+    background-color: #eab12f;
   }
 
-  .owned:hover, .no-gold:hover {
+  .owned:hover,
+  .no-gold:hover {
     cursor: not-allowed;
   }
 }
@@ -125,7 +125,6 @@ a {
 }
 
 .lifebar {
-
   .lifebar-background {
     background-color: red;
     height: 1.5em;
@@ -154,8 +153,9 @@ a {
   table {
     text-align: left;
   }
-  
-  table th, table td {
+
+  table th,
+  table td {
     padding: 5px;
   }
 }

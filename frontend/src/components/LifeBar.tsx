@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
 interface LifeBarProps {
-  life: number;
-  fightOn: boolean;
-  fightOver: boolean;
-  hitAmount: number;
+  life: number
+  fightOn: boolean
+  fightOver: boolean
+  hitAmount: number
 }
 
 interface LifeBarState {
-  life: number;
+  life: number
 }
 
 export class LifeBar extends React.Component<LifeBarProps, LifeBarState> {
   render() {
     const lifeBarStyles = {
-      width: `${this.props.life}%`
-    };
+      width: `${this.props.life}%`,
+    }
 
     return (
       <div>
@@ -28,12 +28,12 @@ export class LifeBar extends React.Component<LifeBarProps, LifeBarState> {
 
         <div className="battlefield-damage">
           {this.props.fightOn || this.props.fightOver
-          ? -this.props.hitAmount
-          : null}
+            ? -this.props.hitAmount
+            : null}
         </div>
       </div>
-    );
-  };
+    )
+  }
 }
 
-export default LifeBar;
+export default LifeBar
